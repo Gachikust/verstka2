@@ -1,0 +1,29 @@
+.text{
+    font-size: 20px;
+    margin: 0.5em 0;
+    padding: 1em 1.5em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: var(--block-color);
+    line-height: 2em;
+}
+.correct-word{
+    position: relative;
+    top:0px;
+    animation: wordsFall 1s linear;
+    animation-fill-mode: forwards;
+    background-color: green;
+}
+@keyframes wordsFall{
+    from{
+        top: 0px;
+        opacity: 1;
+    }
+    to{
+        top:300px;
+        opacity: 0;
+    }
+}
+.wrong-word{
+    background-color: red;
+}
