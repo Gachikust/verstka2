@@ -1,0 +1,33 @@
+.game-block{
+    font-size: 22px;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: var(--block-color);
+}
+.word{
+    font-size: 18px;
+    margin: 0.5em 0;
+    padding: 0.3em 0.7em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: var(--block-color);
+}
+.word-right{
+    background-color: green !important;
+}
+.word-block{
+    display: flex;
+    min-width: 100px;
+    min-height: 66px; 
+    font-size: 22px;
+    margin: 0.5em 0;
+    padding: 0.2em 0.5em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: var(--block-color);
+}
+html{
+    height: 120%;
+}

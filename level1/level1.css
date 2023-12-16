@@ -1,0 +1,51 @@
+
+.left-words{
+    display: flex;
+    flex-direction: column;
+}
+.right-words{
+    display: flex;
+    flex-direction: column;
+}
+.word-block{
+    font-size: 22px;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: var(--block-color);
+}
+
+.words-block{
+    padding: 3em 5em;
+    border: 2px gray solid;
+    border-radius: 10px;
+    background-color: #7fff9b;
+}
+.word-block-selected{
+    transform: scale(1.1,1.1);
+}
+.word-block-right{
+    position: relative;
+    top:0px;
+    animation: wordsFall 1s linear;
+    animation-fill-mode: forwards;
+    background-color: green;
+    pointer-events:none;
+}
+@keyframes wordsFall{
+    from{
+        top: 0px;
+        opacity: 1;
+    }
+    to{
+        top:300px;
+        opacity: 0;
+    }
+}
+.word-block-wrong{
+    background-color: red;
+}
+html{
+    height: 150%;
+}

@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --block-color:#00ff37;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html,body{
+   height: 100%;
+}
+body{
+    background: rgb(97,241,196);
+    background: linear-gradient(0deg, rgba(97,241,196,1) 0%, rgba(63,0,255,1) 100%);
+
+}
+.score{
+    position: absolute;
+    left: 0;
+    top:0;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menu-button{
+    font-size: 18px;
+    padding: 0.5em 1em;
+    border: transparent;
+    
+    background-color: var(--block-color);
+}
+.level-button{
+    margin: 5px 0;
+}
+.menu-button:hover{
+    background-color: #00a323;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.name-input{
+    font-size: 18px;
+    padding: 0.5em 1em;
+    margin: 5px 0;
+}
+#open-score{
+    font-size: 18px;
+    padding: 0.5em 1em;
+    border: transparent;
+    border-radius: 0 0 15px 0/0 0 15px 0;
+}
+.score-content{
+    left: -300px;
+    position: relative;
+    font-size: 14px;
+    padding: 0.5em 1em;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: var(--block-color);
+}
+@keyframes score-open{
+    from{
+        left: -300px;
+    }
+    to{
+        left: 0px;
+    }
+}
+@keyframes score-open-revers{
+    from{
+        left: -300px;
+    }
+    to{
+        left: 0px;
+    }
+}
+.score-animation{
+    animation: score-open linear 1s;
+    animation-fill-mode: forwards;
+}
+.score-animation-reverse{
+    animation: score-open-revers reverse 1s;
+    animation-fill-mode: backwards;
+}
+
+.modal-window{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    background-color: #000000af;
+    justify-content: center;
+    align-items: center;
+    animation: modalOpen 0.5s linear;
+}
+@keyframes modalOpen{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.modal-content{
+    background-color: lightgray;
+    border: 3px gray solid;
+    border-radius: 15px;
+    padding: 2% 2%;
+}
+
+.modal-text{
+    margin: 10px 0;
+    font-size: 14px;
+}
+.ui-modal{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+.ui-modal-element{
+    margin: 10px 0;
+    padding: 0.5em 1em;
+    font-size: 16px;
+}
+.ui-element{
+    font-size: 20px;
+    color: white;
+    margin: 10px 2em 10px 0;
+}
+
+#to-menu{
+    font-size: 18px;
+    padding: 0.5em 1em;
+    border: transparent;
+    border-radius: 0 0 15px 0/0 0 15px 0;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    margin: 30px 4%;
+}
+.ui{
+    display: flex;
+}
+.game-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 5%;
+}
