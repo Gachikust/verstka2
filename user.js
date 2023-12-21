@@ -12,3 +12,9 @@ function getAllusers(){
         });
     }
 }
+
+function getUserObj(){
+    let score = localStorage.getItem('score');
+    var obj = JSON.parse(score);
+    return obj;
+}

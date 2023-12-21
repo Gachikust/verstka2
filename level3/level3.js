@@ -76,7 +76,9 @@ function getRandomNumber(min, max) {
         },1000)
         if(rightAnswer>=5){
             if(localStorage.getItem(username)<3 && username!=''){
-                saveLevel(username,`3`);
+                let obj = getUserObj();
+                    obj[username] = `3`;
+                    localStorage.setItem('score',JSON.stringify(obj));
             }
             isWin=true;
             endGame();
@@ -125,9 +127,6 @@ function StartGame(){
 function endGame(){
     timerWork=false;
     if(isWin){
-        if(localStorage.getItem(username)<2 && username!=''){
-            saveLevel(username,`2`);
-        }
         
         
             addModalContent(`

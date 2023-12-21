@@ -161,7 +161,9 @@ function endGame(){
     }
     if(isWin){
         if(localStorage.getItem(username)<2 && username!=''){
-            saveLevel(username,`2`);
+            let obj = getUserObj();
+                    obj[username] = `2`;
+                    localStorage.setItem('score',JSON.stringify(obj));
         }
         
         
@@ -178,7 +180,7 @@ function endGame(){
             </div>
         `);
         document.querySelector('#next-level').addEventListener('click',()=>{
-            window.location.href='../level3/level3.html';
+            window.location.href=`../level3/level3.html?name=${username}`;
         });
         
   

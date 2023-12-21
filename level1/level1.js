@@ -168,7 +168,9 @@ function addSelected(block){
             if(rightAnswer==difficult){
                 isWin=true;
                 if(username!=''){
-                saveLevel(username,`1.${curLevel}`);
+                    let obj = getUserObj();
+                    obj[username] = `1.${curLevel}`;
+                    localStorage.setItem('score',JSON.stringify(obj));
                 }
                 curLevel++;
                 endGame();
@@ -249,7 +251,7 @@ function endGame(){
             </div>
         `);
         document.querySelector('#next-level').addEventListener('click',()=>{
-            window.location.href='../level2/level2.html';
+            window.location.href=`../level2/level2.html?name=${username}`;
         });
         }
   

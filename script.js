@@ -38,8 +38,17 @@ document.querySelector('#level3').addEventListener('click',()=>{
 });
 
 
-for(let i=0;i<localStorage.length;i++){
+// for(let i=0;i<localStorage.length;i++){
+//     let userElement = document.createElement('p');
+//     userElement.textContent = `${localStorage.key(i)}:${localStorage.getItem(localStorage.key(i))}`;
+//     scoreContent.append(userElement);
+// }
+
+var obj = getUserObj();
+
+for(let key in obj){
     let userElement = document.createElement('p');
-    userElement.textContent = `${localStorage.key(i)}:${localStorage.getItem(localStorage.key(i))}`;
+    userElement.textContent = `${key}:${obj[key]}`;
+    console.log(userElement);
     scoreContent.append(userElement);
 }
