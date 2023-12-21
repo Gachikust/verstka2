@@ -10,32 +10,78 @@ let isWin =false;
 let timerWork=false;
 let username='';
 let wordsArr=[[
-    {num:0,word:'Собака'},
+    {num:0,word:'Граф'},
     {num:1,word:'Барон'},
-    {num:2,word:'Стол'},
+    {num:2,word:'Коза'},
     {num:3,word:'Курица'},
     {num:4,word:'Корова'},
-    {num:5,word:'Сено'},
+    {num:5,word:'Конь'},
     {num:6,word:'Кот'},
     {num:7,word:'Ворон'},
-    {num:8,word:'Торт'},
-    {num:9,word:'Салат'},
+    {num:8,word:'Лев'},
+    {num:9,word:'Мальчик'},
 ],[
-    {num:0,word:'Щенок'},
+    {num:0,word:'Графиня'},
     {num:1,word:'Баронесса'},
-    {num:2,word:'Стул'},
-    {num:3,word:'Ципленок'},
-    {num:4,word:'Теленок'},
-    {num:5,word:'Стог'},
+    {num:2,word:'Козел'},
+    {num:3,word:'Петух'},
+    {num:4,word:'Бык'},
+    {num:5,word:'Лошадь'},
     {num:6,word:'Кошка'},
     {num:7,word:'Ворона'},
-    {num:8,word:'Пирог'},
-    {num:9,word:'Оливье'},
-]]
+    {num:8,word:'Львица'},
+    {num:9,word:'Девочка'},
+]];
+let wordsArr2=[[
+    {num:0,word:'Собака'},
+    {num:1,word:'Взрослый'},
+    {num:2,word:'Лошадь'},
+    {num:3,word:'Курица'},
+    {num:4,word:'Корова'},
+    {num:5,word:'Рыба'},
+    {num:6,word:'Кот'},
+    {num:7,word:'Коза'},
+    {num:8,word:'Дерево'},
+    {num:9,word:'Помидор'},
+],[
+    {num:0,word:'Щенок'},
+    {num:1,word:'Ребенок'},
+    {num:2,word:'Жеребенок'},
+    {num:3,word:'Цыпленок'},
+    {num:4,word:'Теленок'},
+    {num:5,word:'Малек'},
+    {num:6,word:'Котенок'},
+    {num:7,word:'Козленок'},
+    {num:8,word:'Саженец'},
+    {num:9,word:'Семечко'},
+]];
+let wordsArr3=[[
+    {num:0,word:'Улей'},
+    {num:1,word:'Окно'},
+    {num:2,word:'Стул'},
+    {num:3,word:'Дерево'},
+    {num:4,word:'Лошадь'},
+    {num:5,word:'Компьютер'},
+    {num:6,word:'Птица'},
+    {num:7,word:'Стакан'},
+    {num:8,word:'Шкаф'},
+    {num:9,word:'Салат'},
+],[
+    {num:0,word:'Пчелы'},
+    {num:1,word:'Рама'},
+    {num:2,word:'Спинка'},
+    {num:3,word:'Ветка'},
+    {num:4,word:'Копыто'},
+    {num:5,word:'Процессор'},
+    {num:6,word:'Клюв'},
+    {num:7,word:'Ручка'},
+    {num:8,word:'Полка'},
+    {num:9,word:'Помидор'},
+]];
 openModal();
 //addOpenListener();
  addModalContent(`
-<p class="modal-text">В этой игре вы должны соединять подходящие слова</p>
+<p class="modal-text">В этой игре вы должны соединять подходящие слова. Нажмите сначала на первое слово, потом на второе</p>
             <div class="ui-modal">
                 <select id="difficult-select" class="ui-modal-element">
                     <option value = "5">легкий</option>
@@ -73,7 +119,7 @@ document.querySelector('#start-game').addEventListener('click',()=>{
     StartGame();
 });
 
-function generateWordsBlock(blockCount){
+function generateWordsBlock(blockCount, wordsArr){
     let leftBlock = document.querySelector('.left-words');
     leftBlock.innerHTML ='';
     let rightBlock = document.querySelector('.right-words');
@@ -122,7 +168,6 @@ function addSelected(block){
             if(rightAnswer==difficult){
                 isWin=true;
                 if(username!=''){
-                    console.log('!!')
                 saveLevel(username,`1.${curLevel}`);
                 }
                 curLevel++;
@@ -231,19 +276,22 @@ function endGame(){
 let counter = document.querySelector('.count');
 function StartGame(){
     timerWork=true;
-    console.log(curLevel);
     switch (curLevel){
         case 1:
             timer(20,()=>{endGame();});
+            generateWordsBlock(difficult,wordsArr);
             break
         case 2:
             timer(15,()=>{endGame();});
+            generateWordsBlock(difficult,wordsArr2);
             break
         case 3:
             timer(10,()=>{endGame();});
+            generateWordsBlock(difficult,wordsArr3);
             break
         default:
             timer(10,()=>{endGame();});
+            generateWordsBlock(difficult,wordsArr);
             break
     }
     difficult = 5;
@@ -256,14 +304,14 @@ function StartGame(){
     
     difficultSelect = document.querySelector('#difficult-select');
     difficult = difficultSelect.options[difficultSelect.selectedIndex].value;
-    generateWordsBlock(difficult);
+    
     counter.textContent = `соединено 0/${difficult}`;
 }
 document.querySelector('#to-menu').addEventListener('click',()=>{
     window.location.href='../index.html';
 })
+
 getUsername();
-console.log(username);
 function getUsername(){
     let myUrl = window.location.search
     myUrl = myUrl.substring(1);
