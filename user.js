@@ -18,3 +18,7 @@ function getUserObj(){
     var obj = JSON.parse(score);
     return obj;
 }
+console.log(localStorage.getItem('score'));
+if(localStorage.getItem('score')==null){
+    localStorage.setItem('score','{}');
+}
